@@ -1,3 +1,4 @@
+import { TRIALS_NUM } from '../constants/nums'
 import {
   GameStats,
   loadStatsFromLocalStorage,
@@ -15,7 +16,7 @@ export const addStatsForCompletedGame = (
 
   stats.totalGames += 1
 
-  if (count > 5) {
+  if (count > TRIALS_NUM - 1) {
     // A fail situation
     stats.currentStreak = 0
     stats.gamesFailed += 1
@@ -35,7 +36,7 @@ export const addStatsForCompletedGame = (
 }
 
 const defaultStats: GameStats = {
-  winDistribution: [0, 0, 0, 0, 0, 0],
+  winDistribution: new Array(TRIALS_NUM).fill(0),
   gamesFailed: 0,
   currentStreak: 0,
   bestStreak: 0,
