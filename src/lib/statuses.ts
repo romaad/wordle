@@ -1,35 +1,42 @@
 import { solution } from './words'
 
-export type CharStatus = 'absent' | 'present' | 'correct'
+export type CharStatus = 'absent' | 'present' | 'correct' | 'ENTER' | 'DELETE'
 
-export type CharValue =
-  | 'Q'
-  | 'W'
-  | 'E'
-  | 'R'
-  | 'T'
-  | 'Y'
-  | 'U'
-  | 'I'
-  | 'O'
-  | 'P'
-  | 'A'
-  | 'S'
-  | 'D'
-  | 'F'
-  | 'G'
-  | 'H'
-  | 'J'
-  | 'K'
-  | 'L'
-  | 'Z'
-  | 'X'
-  | 'C'
-  | 'V'
-  | 'B'
-  | 'N'
-  | 'M'
-
+export const charkeys =
+  [ 'ض',
+   'ص',
+   'ث',
+   'ق',
+   'ف',
+   'غ',
+   'ع',
+   'ه',
+   'خ',
+   'ح',
+   'ج',
+   'د',
+   'ش',
+   'س',
+   'ي',
+   'ب',
+   'ل',
+   'ا',
+   'ت',
+   'ن',
+   'م',
+   'ك',
+   'ط',
+   'ئ',
+   'ء',
+   'ؤ',
+   'ر',
+   'ى',
+   'ة',
+   'ذ',
+   'و',
+   'ظ',
+   'ز',
+  ]
 export const getStatuses = (
   guesses: string[]
 ): { [key: string]: CharStatus } => {

@@ -1,3 +1,3 @@
-import { CharValue } from './statuses'
+import { charkeys } from './statuses'
 
-export type KeyValue = CharValue | 'ENTER' | 'DELETE'
+export const KEYS = [...charkeys, 'ENTER' , 'DELTE']

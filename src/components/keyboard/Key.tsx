@@ -1,14 +1,13 @@
 import { ReactNode } from 'react'
 import classnames from 'classnames'
-import { KeyValue } from '../../lib/keyboard'
 import { CharStatus } from '../../lib/statuses'
 
 type Props = {
   children?: ReactNode
-  value: KeyValue
+  value: string
   width?: number
   status?: CharStatus
-  onClick: (value: KeyValue) => void
+  onClick: (value: string) => void
 }
 
 export const Key = ({
@@ -28,6 +27,11 @@ export const Key = ({
         status === 'correct',
       'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 dark:bg-yellow-700 text-white':
         status === 'present',
+      'bg-red-500 hover:bg-red-600 active:bg-red-700 dark:bg-red-700 text-white':
+        status === 'DELETE',
+      'bg-green-500 hover:bg-green-600 active:bg-green-700 dark:bg-green-700 text-white':
+        status === 'ENTER',
+      
     }
   )
 

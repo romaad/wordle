@@ -19,6 +19,7 @@ import {
 } from './lib/localStorage'
 
 import './App.css'
+import { TRIALS_NUM, WORD_WIDTH } from './constants/nums'
 
 const ALERT_TIME_MS = 2000
 
@@ -95,7 +96,11 @@ function App() {
   }, [isGameWon, isGameLost])
 
   const onChar = (value: string) => {
-    if (currentGuess.length < 5 && guesses.length < 6 && !isGameWon) {
+    if (
+      currentGuess.length < WORD_WIDTH &&
+      guesses.length < TRIALS_NUM &&
+      !isGameWon
+    ) {
       setCurrentGuess(`${currentGuess}${value}`)
     }
   }
@@ -108,7 +113,7 @@ function App() {
     if (isGameWon || isGameLost) {
       return
     }
-    if (!(currentGuess.length === 5)) {
+    if (!(currentGuess.length === WORD_WIDTH)) {
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
@@ -124,7 +129,11 @@ function App() {
 
     const winningWord = isWinningWord(currentGuess)
 
-    if (currentGuess.length === 5 && guesses.length < 6 && !isGameWon) {
+    if (
+      currentGuess.length === WORD_WIDTH &&
+      guesses.length < TRIALS_NUM &&
+      !isGameWon
+    ) {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
 
@@ -133,7 +142,7 @@ function App() {
         return setIsGameWon(true)
       }
 
-      if (guesses.length === 5) {
+      if (guesses.length === TRIALS_NUM - 1) {
         setStats(addStatsForCompletedGame(stats, guesses.length + 1))
         setIsGameLost(true)
       }
@@ -143,7 +152,7 @@ function App() {
   return (
     <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div className="flex w-80 mx-auto items-center mb-8">
-        <h1 className="text-xl grow font-bold dark:text-white">Not Wordle</h1>
+        <h1 className="text-xl grow font-bold dark:text-white">كلماية</h1>
         <SunIcon
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => handleDarkMode(!isDarkMode)}

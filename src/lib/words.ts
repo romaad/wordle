@@ -1,27 +1,39 @@
-import { WORDS } from '../constants/wordlist'
-import { VALIDGUESSES } from '../constants/validGuesses'
+import { WORDS_AR } from "../constants/wordlist_AR"
+import { VALIDGUESSES_AR } from "../constants/validGuesses_AR"
+import { WORD_WIDTH } from "../constants/nums"
+
 
 export const isWordInWordList = (word: string) => {
   return (
-    WORDS.includes(word.toLowerCase()) ||
-    VALIDGUESSES.includes(word.toLowerCase())
+    WORDS_AR.includes(word.toLowerCase()) ||
+    VALIDGUESSES_AR.includes(word.toLowerCase())
   )
 }
 
+const alef = ['ا', 'أ', 'إ', 'آ']
 export const isWinningWord = (word: string) => {
-  return solution === word
+  for(let i = 0; i < WORD_WIDTH; i++) {
+    if(solution[i] === word[i]) {
+      continue;
+    }
+    if(solution[i] in alef && word[i] in alef) {
+      continue;
+    }
+    return false;
+  }
+  return true
 }
 
 export const getWordOfDay = () => {
-  // January 1, 2022 Game Epoch
-  const epochMs = new Date('January 1, 2022 00:00:00').valueOf()
+  // January 27, 2022 Game Epoch
+  const epochMs = new Date('January 27, 2022 00:00:00').valueOf()
   const now = Date.now()
   const msInDay = 86400000
   const index = Math.floor((now - epochMs) / msInDay)
   const nextday = (index + 1) * msInDay + epochMs
 
   return {
-    solution: WORDS[index % WORDS.length].toUpperCase(),
+    solution: WORDS_AR[index % WORDS_AR.length].toUpperCase(),
     solutionIndex: index,
     tomorrow: nextday,
   }
