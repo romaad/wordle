@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const CompletedRow = ({ guess }: Props) => {
-  const statuses = getGuessStatuses(guess)
+  const statuses = getGuessStatuses(guess).reverse()
 
   return (
     <div className="flex justify-center mb-1">
