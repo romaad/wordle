@@ -1,5 +1,5 @@
 export const WIN_MESSAGES = ['batal!', '3ash', 'Gamed!', "wal3ana"]
-export const WORDLE_TITLE = 'كلماية'
+export const WORDLE_TITLE = '3arosty'
 
 export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'
 export const ABOUT_GAME_MESSAGE = 'About this game'
