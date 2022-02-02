@@ -49,6 +49,12 @@ for word in list(out):
     if word[1:] in dico or word[2:] in dico:
         out.remove(word)
 
+with open("arabic-wordlist-1.6.txt", "r") as fo:
+    for line in fo.readlines():
+        line = line.strip()
+        if len(line) == 5:
+            out_guess.add(line)
+
 with open("wordlist_AR.ts", "w") as out_file:
     outstr = json.dumps(list(out), indent = 4, sort_keys=True, ensure_ascii=False)
     outstr = "export const WORDS_AR = \n" + outstr 
