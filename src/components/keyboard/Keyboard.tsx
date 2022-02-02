@@ -46,7 +46,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
 
   function getRow(idx: number) {
     let start = idx * 12;
-    let end = (idx > 1? 32 : (idx + 1)*12);
+    let end = (idx > 1? 33 : (idx + 1)*12);
 
     return KEYS.slice(start, end).map((key) => {
       return (
